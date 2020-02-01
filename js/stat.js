@@ -16,6 +16,17 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+// Функция для получения случайного целого числа в заданном интервале
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min; // Максимум не включается, минимум включается
+}
+
+// Функия возвращает случайный оттенок синего
+function randomColor(colorNumber) {
+  var randomSaturate = getRandomInt(0, 100);
+  return 'hsl(' + colorNumber + ' , ' + randomSaturate + '%, 50%)';
+}
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -37,19 +48,6 @@ window.renderStatistics = function (ctx, players, times) {
     return maxElement;
   };
 
-  // Функция для получения случайного целого числа в заданном интервале
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; // Максимум не включается, минимум включается
-  }
-
-  // Функия возвращает случайный оттенок синего
-  function randomBlue() {
-    var randomSaturate = getRandomInt(0, 100);
-    return 'hsl(240, ' + randomSaturate + '%, 50%)';
-  }
-
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
@@ -60,7 +58,7 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = randomBlue();
+      ctx.fillStyle = randomColor(240);
     }
 
     ctx.fillRect((CLOUD_X + GAP_X) + (SPACE_BETWEEN + BAR_WIDTH) * i, CLOUD_HEIGHT - GAP_Y + GAP * 3, BAR_WIDTH, -(GIST_HEIGHT * times[i]) / maxTime);
