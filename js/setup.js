@@ -3,12 +3,12 @@
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLOR = [
-  'rgb (101, 137, 164)',
-  'rgb (241, 43, 107)',
-  'rgb (146, 100, 161)',
-  'rgb (56, 159, 117)',
-  'rgb (215, 210, 55)',
-  'rgb (0, 0, 0)'
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
 ];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 
@@ -29,41 +29,21 @@ var getRandomName = function (arr1, arr2) {
   return randomName;
 };
 
-// Функция для подбора случайного цвета мантии
-var getRandomCoatColor = function (arr) {
-  var randomCoatColor = Math.floor(Math.random() * arr.length);
-  return arr[randomCoatColor];
+// Функция для подбора случайного цвета
+var getRandomColor = function (arr) {
+  var randomColor = Math.floor(Math.random() * arr.length);
+  return arr[randomColor];
 };
 
-// Функция для подбора случайного цвета глаз
-var getRandomEyesColor = function (arr) {
-  var randomEyesColor = Math.floor(Math.random() * arr.length);
-  return arr[randomEyesColor];
-};
-
-var wizards = [
-  {
+var wizards = [];
+for (var j = 0; j < 4; j++) {
+  var wizardsData = {
     name: getRandomName(WIZARD_NAMES, WIZARD_LAST_NAMES),
-    coatColor: getRandomCoatColor(COAT_COLOR),
-    eyesColor: getRandomEyesColor(EYES_COLOR)
-  },
-  {
-    name: getRandomName(WIZARD_NAMES, WIZARD_LAST_NAMES),
-    coatColor: getRandomCoatColor(COAT_COLOR),
-    eyesColor: getRandomEyesColor(EYES_COLOR)
-  },
-  {
-    name: getRandomName(WIZARD_NAMES, WIZARD_LAST_NAMES),
-    coatColor: getRandomCoatColor(COAT_COLOR),
-    eyesColor: getRandomEyesColor(EYES_COLOR)
-  },
-  {
-    name: getRandomName(WIZARD_NAMES, WIZARD_LAST_NAMES),
-    coatColor: getRandomCoatColor(COAT_COLOR),
-    eyesColor: getRandomEyesColor(EYES_COLOR)
-  }
-];
-
+    coatColor: getRandomColor(COAT_COLOR),
+    eyesColor: getRandomColor(EYES_COLOR)
+  };
+  wizards.push(wizardsData);
+}
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
