@@ -11,6 +11,7 @@ var COAT_COLOR = [
   'rgb(0, 0, 0)'
 ];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_AMOUNT = 4;
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -22,21 +23,21 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .querySelector('.setup-similar-item');
 
 // Функция для подбора случайного имени волшебника
-var getRandomName = function (arr1, arr2) {
-  var randomWizardName = Math.floor(Math.random() * arr1.length);
-  var randomWizardLastName = Math.floor(Math.random() * arr2.length);
-  var randomName = arr1[randomWizardName] + ' ' + arr2[randomWizardLastName];
+var getRandomName = function (firstName, secondName) {
+  var randomWizardName = Math.floor(Math.random() * firstName.length);
+  var randomWizardLastName = Math.floor(Math.random() * secondName.length);
+  var randomName = firstName[randomWizardName] + ' ' + secondName[randomWizardLastName];
   return randomName;
 };
 
 // Функция для подбора случайного цвета
-var getRandomColor = function (arr) {
-  var randomColor = Math.floor(Math.random() * arr.length);
-  return arr[randomColor];
+var getRandomColor = function (color) {
+  var randomColor = Math.floor(Math.random() * color.length);
+  return color[randomColor];
 };
 
 var wizards = [];
-for (var j = 0; j < 4; j++) {
+for (var j = 0; j < WIZARD_AMOUNT; j++) {
   var wizardsData = {
     name: getRandomName(WIZARD_NAMES, WIZARD_LAST_NAMES),
     coatColor: getRandomColor(COAT_COLOR),
