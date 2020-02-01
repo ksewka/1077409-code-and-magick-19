@@ -18,7 +18,7 @@ var renderCloud = function (ctx, x, y, color) {
 
 // Функция для получения случайного целого числа в заданном интервале
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min; // Максимум не включается, минимум включается
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Функия возвращает случайный оттенок синего
