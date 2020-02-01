@@ -27,6 +27,18 @@ function randomColor(colorNumber) {
   return 'hsl(' + colorNumber + ' , ' + randomSaturate + '%, 50%)';
 }
 
+// Функция для поиска максимального значения в массиве
+var getMaxElement = function (arr) {
+  var maxElement = arr[0];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
+    }
+  }
+  return maxElement;
+}
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -35,18 +47,6 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.font = '16px PT Mono ';
   ctx.fillText('Ура вы победили!', CLOUD_X + GAP * 4, CLOUD_Y * 4);
   ctx.fillText('Список результатов: ', CLOUD_X + GAP * 4, CLOUD_Y * 4 + GAP * 2);
-
-  // Функция для поиска максимального значения в массиве
-  var getMaxElement = function (arr) {
-    var maxElement = arr[0];
-
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] > maxElement) {
-        maxElement = arr[i];
-      }
-    }
-    return maxElement;
-  };
 
   var maxTime = getMaxElement(times);
 
