@@ -16,7 +16,7 @@ var ENTER_KEY = 'Enter';
 var FIREBOLL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var userDialog = document.querySelector('.setup');
-//userDialog.classList.remove('hidden');
+// userDialog.classList.remove('hidden');
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var wizardCoat = document.querySelector('.wizard-coat');
@@ -28,7 +28,6 @@ var fireboll = document.querySelector('.setup-fireball-wrap');
 var firebollColorInput = setup.querySelector('input[name = "fireball-color"]');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
-var setupSubmit = setup.querySelector('.setup-submit');
 var userNameInput = document.querySelector('.setup-user-name');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
@@ -77,12 +76,8 @@ similarListElement.appendChild(fragment);
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 var onPopupEscPress = function (evt) {
-  if (userNameInput === document.activeElement) {
-    return evt;
-  } else {
-    if (evt.key === ESC_KEY) {
-      closePopup();
-    }
+  if ((userNameInput !== document.activeElement) && (evt.key === ESC_KEY)) {
+    closePopup();
   }
 };
 
